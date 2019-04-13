@@ -1,6 +1,5 @@
 # Always use a version
-FROM alpine:3.8
-FROM openjdk:9-jre
+FROM adoptopenjdk/openjdk9:alpine
 
 LABEL maintainer="vinc.sohn@gmail.com"
 
