@@ -8,7 +8,7 @@
     <artifactId>java-wrapper</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>java9-wrapper-test</name>
+    <name>java10-wrapper-test</name>
     <description>My test on this approach</description>
 
     <parent>
@@ -17,12 +17,33 @@
         <version>2.1.3.RELEASE</version>
     </parent>
 
+    <properties>
+        <!-- release property is used for maven when Java9 or higher is running -->
+        <maven.compiler.release>10</maven.compiler.release>
+    </properties>
+
     <repositories>
         <repository>
             <id>Jcenter</id>
             <url>http://jcenter.bintray.com/</url>
         </repository>
     </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                    <mainClass>de.ApiDemo</mainClass>
+                    <!-- The original one will be installed/deployed -->
+                    <!-- see also: https://docs.spring.io/spring-boot/docs/2.0.5.RELEASE/maven-plugin/examples/repackage-disable-attach.html -->
+                    <attach>false</attach>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
@@ -44,6 +65,12 @@
             <groupId>org.aion.network</groupId>
             <artifactId>aion_api</artifactId>
             <version>0.1.15</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

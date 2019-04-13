@@ -1,14 +1,14 @@
-# java9-wrapper test
+# java10-wrapper test
 
 ## Prerequisite
 
-- Open JDK 9
-  - Download Open JDK 9 from https://adoptopenjdk.net
+- Open JDK 10
+  - Download Open JDK 10 from https://adoptopenjdk.net
   - Extract *.tar.gz into persistent directory
   - Setup it as a SDK in your IDE
   
 - Docker
- - Download and install Docker from https://docs.docker.com/install/
+  - Download and install Docker from https://docs.docker.com/install/
 
 ## Initialization
 
@@ -28,12 +28,16 @@ Maven must run for before Docker.
 
 ### Docker
 
-    docker build -t java9wrapper .
+    docker build -t java10wrapper .
 
    
 Test if docker runs fine
 
-    docker run --rm -it test java -version
+    docker run --rm -it java10wrapper java -version
+    
+and test the AION API Demo
+    
+    docker run --rm -it java10wrapper java -jar java-wrapper.jar -h
 
 ## AION API
 
@@ -55,8 +59,8 @@ Build documentation: https://github.com/aionnetwork/aion_api/wiki/Api-Build-Guil
     ./gradlew build
 
 Had to change in the `gradlew` file: 
-`JAVACMD` replaced with `/home/vstange/jdk/jdk-9.0.4+11/bin/java` my 
-local Java9 call, since my JAVA_HOME targets my Java8 installation.
+`JAVACMD` replaced with `/home/vstange/jdk/jdk-10.0.2+13/bin/java` my 
+local Java 10 call, since my JAVA_HOME targets my Java 8 installation.
 
 **Jar** can be found in `./pack`
 
@@ -66,5 +70,5 @@ local Java9 call, since my JAVA_HOME targets my Java8 installation.
 
 | ID | Version | Size
 | ------------ | ------ | -------
-| adoptopenjdk/openjdk9 | alpine | 360 MB 
-| openjdk | 9-jre | 635 MB 
+| adoptopenjdk/openjdk10 | alpine | 781 MB 
+
