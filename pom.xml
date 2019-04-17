@@ -19,7 +19,7 @@
 
     <properties>
         <!-- release property is used for maven when Java9 or higher is running -->
-        <maven.compiler.release>10</maven.compiler.release>
+        <maven.compiler.release>11</maven.compiler.release>
     </properties>
 
     <repositories>

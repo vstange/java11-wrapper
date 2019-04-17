@@ -1,4 +1,0 @@
-[submodule "aion_api"]
-	path = aion_api
-	url = git@github.com:aionnetwork/aion_api.git
-	branch = master

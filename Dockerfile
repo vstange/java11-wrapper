@@ -1,5 +1,5 @@
 # Always use a version
-FROM adoptopenjdk/openjdk10:alpine
+FROM adoptopenjdk/openjdk11:alpine
 
 LABEL maintainer="vinc.sohn@gmail.com"
 

@@ -2,8 +2,8 @@
 
 ## Prerequisite
 
-- Open JDK 10
-  - Download Open JDK 10 from https://adoptopenjdk.net
+- Open JDK 11
+  - Download Open JDK 11 from https://adoptopenjdk.net
   - Extract *.tar.gz into persistent directory
   - Setup it as a SDK in your IDE
   
@@ -24,33 +24,44 @@ Maven must run for before Docker.
 
 ### Maven
 
+Your JAVA_HOME should point towards your Java 11 directory or you run Maven via your IDE.
+
     mvn clean install
 
 ### Docker
 
-    docker build -t java10wrapper .
+    docker build -t java11wrapper .
 
    
 Test if docker runs fine
 
-    docker run --rm -it java10wrapper java -version
+    docker run --rm -it java11wrapper java -version
     
 and test the AION API Demo
     
-    docker run --rm -it java10wrapper java -jar java-wrapper.jar -h
+    docker run --rm -it java11wrapper java -jar java-wrapper.jar -h
 
 ## AION API
 
+### Maven
+
 https://mvnrepository.com/artifact/org.aion.network/aion_api
 
-GitHub Page: https://github.com/aionnetwork/aion_api
+    <dependency>
+        <groupId>org.aion.network</groupId>
+        <artifactId>aion_api</artifactId>
+        <version>0.1.15</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.slf4j</groupId>
+                <artifactId>*</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
 
-    # How the submodule was added
-    git submodule add -b master git@github.com:aionnetwork/aion_api.git
-    git submodule init 
-    
-    # Update submodule (submodule --remote fetches new commits in the submodules)
-    git submodule update --remote
+### Build it yourself
+
+GitHub Page: https://github.com/aionnetwork/aion_api
 
 Build documentation: https://github.com/aionnetwork/aion_api/wiki/Api-Build-Guild
 
@@ -68,7 +79,9 @@ local Java 10 call, since my JAVA_HOME targets my Java 8 installation.
 
 ## Docker Images Sizes
 
+    docker images java11wrapper
+
 | ID | Version | Size
 | ------------ | ------ | -------
-| adoptopenjdk/openjdk10 | alpine | 781 MB 
+| adoptopenjdk/openjdk11 | alpine | 362 MB 
 
