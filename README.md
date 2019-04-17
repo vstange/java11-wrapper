@@ -32,6 +32,13 @@ Your JAVA_HOME should point towards your Java 11 directory or you run Maven via 
 
     docker build -t java11wrapper .
 
+Run the spring boot server with:
+
+    docker run --rm -p 8080:8080 -it java11wrapper
+    
+    curl http://localhost:8080/ping     # should return 2Hello World"
+
+**Old** - before change to Spring Boot server:
    
 Test if docker runs fine
 

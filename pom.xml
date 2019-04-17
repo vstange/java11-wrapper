@@ -36,7 +36,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <executable>true</executable>
-                    <mainClass>de.ApiDemo</mainClass>
+                    <mainClass>de.SpringMain</mainClass>
                     <!-- The original one will be installed/deployed -->
                     <!-- see also: https://docs.spring.io/spring-boot/docs/2.0.5.RELEASE/maven-plugin/examples/repackage-disable-attach.html -->
                     <attach>false</attach>
